@@ -50,11 +50,11 @@ function clearGallery() {
 }
 
 function showLoader() {
-    loader.classList.remove('.hidden');
+    loader.classList.remove('.is-hidden');
 }
 
 function hideLoader() {
-    loader.classList.add('.hidden');
+    loader.classList.add('.is-hidden');
 }
 
 export { createGallery, clearGallery, showLoader, hideLoader };
