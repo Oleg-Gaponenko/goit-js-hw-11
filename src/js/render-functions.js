@@ -1,18 +1,13 @@
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
-
-// У файлі render-functions.js створи екземпляр SimpleLightbox для роботи з модальним вікном та зберігай функції для відображення елементів інтерфейсу:
-
-// createGallery(images). Ця функція повинна приймати масив images, створювати HTML-розмітку для галереї,
-// додавати її в контейнер галереї та викликати метод екземпляра SimpleLightbox refresh(). Нічого не повертає.
-// clearGallery(). Ця функція нічого не приймає та повинна очищати вміст контейнера галереї. Нічого не повертає.
-// showLoader(). Ця функція нічого не приймає, повинна додавати клас для відображення лоадера. Нічого не повертає.
-// hideLoader(). Ця функція нічого не приймає, повинна прибирати клас для відображення лоадера. Нічого не повертає.
-
-
 const gallery = document.querySelector('.gallery');
 const loader = document.querySelector('.loader');
+
+const simpleBox = new SimpleLightbox ('.gallery-link', {
+  captionsData: 'alt',
+  captionDelay: 250,
+});
 
 function createGallery (images) {
     const galleryMarkup = images.map(( { webformatURL, largeImageURL, tags, likes, views, comments, downloads } ) => `
@@ -25,36 +20,40 @@ function createGallery (images) {
     />
   </a>
   <div class="info">
-    <h2 class="title">Likes<h2>
+  <div class="info-item">
+   <p class="title">Likes</p>
    <p class="item">${likes}</p>
-    <h2 class="title">Views<h2>
+  </div>
+  <div class="info-item">
+   <p class="title">Views</p>
    <p class="item">${views}</p>
-    <h2 class="title">Comments<h2>
+  </div>
+  <div class="info-item">
+   <p class="title">Comments</p>
    <p class="item">${comments}</p>
-    <h2 class="title">Downloads<h2>
-   <p class="item">${downloads}</p>
-  <div>
+  </div>
+  <div class="info-item">
+  <p class="title">Downloads</p>
+  <p class="item">${downloads}</p>
+  </div>
+  </div>
 </li>
 `).join('');
 
 gallery.innerHTML = galleryMarkup;
+simpleBox.refresh();
 }
-
-new SimpleLightbox ('.gallery-link', {
-  captionsData: 'alt',
-  captionDelay: 250,
-});
 
 function clearGallery() {
     gallery.innerHTML = '';
 }
 
 function showLoader() {
-    loader.classList.remove('.is-hidden');
+    loader.classList.remove('is-hidden');
 }
 
 function hideLoader() {
-    loader.classList.add('.is-hidden');
+    loader.classList.add('is-hidden');
 }
 
 export { createGallery, clearGallery, showLoader, hideLoader };

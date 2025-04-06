@@ -1,17 +1,9 @@
-/**
-  |============================
-  | include css partials with
-  | default @import url()
-  |============================
-*/
-/* Common styles */
 @import url('./reset.css');
 @import url('./base.css');
 
 .gallery {
   display: flex;
   max-width: 1440px;
-  padding: 24px 156px;
   margin: 0 auto;
   flex-direction: row;
   flex-wrap: wrap;
@@ -24,6 +16,7 @@
 .gallery-item {
   width: 360px;
   height: 200px;
+  border: 1px solid #808080;
   transition: transform 250ms linear;
 }
 
@@ -31,19 +24,32 @@
   transform: scale(1.04);
 }
 
+.info {
+  display: flex;
+  flex-direction: row;
+  height: 48px;
+  justify-content: space-around;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-weight: 500;
+}
+
 .form {
   display: inline-flex;
   padding: 24px;
-  flex-direction: column;
   align-items: flex-start;
   gap: 16px;
   border-radius: 8px;
+  margin: 0 auto;
   background: #fff;
-  border: 2px solid #4e75ff;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 .query-label {
@@ -78,7 +84,6 @@
 }
 
 .query-input::placeholder {
-  padding-left: 16px;
   color: #2e2f42;
 }
 
@@ -116,6 +121,7 @@
   border-radius: 50%;
   box-sizing: border-box;
   animation: 1s rotate linear infinite;
+  margin: 0 auto;
 }
 .loader:before,
 .loader:after {
@@ -139,5 +145,17 @@
 
 .is-hidden {
   display: none;
-  visibility: hidden;
+}
+
+.sl-image {
+  width: 70vw !important;
+  height: auto !important;
+  object-fit: contain !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+.sl-caption {
+  width: 100% !important;
 }

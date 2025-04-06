@@ -14,8 +14,9 @@ function handleSubmit(event) {
 
     if(imageQuery === ''){
         iziToast.error({
-            title: Error,
             message: 'Please enter your search query!',
+            position: 'topRight',
+            maxWidth: '450px',
         })
      return;
     }
@@ -27,8 +28,9 @@ getImagesByQuery(imageQuery)
     .then(images => {
         if(images.length === 0) {
             iziToast.error({
-                title: 'Error',
                 message: 'Sorry, there are no images matching your search query. Please try again!',
+                position: 'topRight',
+                maxWidth: '450px',
             })
         }  else {
             createGallery(images);
@@ -37,8 +39,9 @@ getImagesByQuery(imageQuery)
     })
     .catch(error => {
         iziToast.error({
-            title: 'Error',
-            message: 'Cannot fetch images'
+            message: 'Cannot fetch images',
+            position: 'topRight',
+            maxWidth: '450px',
         })
     })
     .finally(() => {
